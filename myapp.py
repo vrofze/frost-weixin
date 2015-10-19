@@ -18,3 +18,26 @@ def teardown_request(exception):
 def hello():
     return "hello, world!-Flask"
 
+@app.route('/demo', methods = ['GET', 'POST'])
+def greeting():
+    html = ''
+
+    if request.method == 'POST':
+        c = g.db.cursor()
+        c.execute("insert into demo(text) values (%s)", (request.form['text']))
+
+    html +="""
+    <form action = "" method = "POST">
+        <div><textarea cols = "40" name = "text"></textarea></div>
+        <div><input type = "submit"/></div>
+    </form>
+    """
+
+    c = g.db.cursor()
+    c.execute('select * from demo')
+    msgs = list(c.fetchall())
+    msgs.reverse()
+    for row in msgs:
+        html += '<p>' + row[-1] + '</p>'
+
+    return html
