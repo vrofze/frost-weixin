@@ -9,10 +9,10 @@ app.debug = True
 
 from sae.const import (MYSQL_HOST, MYSQL_HOST_S, MYSQL_PORT, MYSQL_USER, MYSQL_PASS, MYSQL_DB)
 
-@app.route('/', method = ['GET', 'POST'])
+@app.route('/', methods = ['GET', 'POST'])
 def wechat_auth():
     if request.method == 'GET':
-        token = ''
+        token = 'imok'
         query = request.args
         signature = query.get('signature', '')
         timestamp = query.get('timestamp', '')
