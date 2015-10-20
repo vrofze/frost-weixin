@@ -1,4 +1,4 @@
-#-*- coding: UTF-8 -*-
+#-*- coding: utf-8 -*-
 import MySQLdb
 from flask import Flask, g, request, make_response
 import hashlib
@@ -28,7 +28,7 @@ def wechat_auth():
     xml_recv = ET.fromstring(request.data)
     ToUserName = xml_recv.find("ToUserName").text
     FromUserName = xml_recv.find("FromUserName").text
-    Content = tuling.Get(xml_recv.find("Content").text)
+    Content = tuling.Get(xml_recv.find("Content").text.decode('utf-8'))
     reply = "<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><FuncFlag>0</FuncFlag></xml>"
     response = make_response(reply % (FromUserName, ToUserName, str(int(time.time())), Content))
     response.content_type = 'application/xml'
