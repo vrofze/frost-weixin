@@ -1,3 +1,4 @@
+#-*- coding: UTF-8 -*-
 import MySQLdb
 from flask import Flask, g, request, make_response
 import hashlib
