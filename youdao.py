@@ -34,7 +34,7 @@ def get(str):
                     res += cb + ","
                     res = res[:-1] + "\n"
             else:
-                res += cb + "\n"
+                res += dic_json["basic"][c] + "\n"
             #else:
             #    res += dic_json["basic"][c] + "\n"
         #if dic_json["basic"]["phonetic"] != "":
