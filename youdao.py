@@ -29,9 +29,12 @@ def get(str):
         for c in dic_json["basic"]:
             res += c + ':'
             #if type(dic_json["basic"][c]) is dict:
-            for cb in dic_json["basic"][c]:
-                res += cb + ","
-                res = res[:-1] + "\n"
+            if type(dic_json["basic"][c]) is list:
+                for cb in dic_json["basic"][c]:
+                    res += cb + ","
+                    res = res[:-1] + "\n"
+            else:
+                res += cb + "\n"
             #else:
             #    res += dic_json["basic"][c] + "\n"
         #if dic_json["basic"]["phonetic"] != "":
