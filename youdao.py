@@ -3,7 +3,7 @@ from tuling import getHtml
 import json
 
 def get(str):
-    api = "http://fanyi.youdao.com/openapi.do?keyfrom=frostwx&key=594129755&type=data&doctype=json&version=1.1&q=%s" % str
+    api = "http://fanyi.youdao.com/openapi.do?keyfrom=frostwx&key=594129755&type=data&doctype=json&version=1.1&q=%s" % str.encode('utf8')
     response = getHtml(api)
     dic_json = json.loads(response)
     res = ''
