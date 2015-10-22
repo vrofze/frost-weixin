@@ -25,20 +25,28 @@ def get(str):
         for c in dic_json["translation"]:
             res += c + ","
         res = res[:-1] + "\n"
-        res += u"基本词典\n"
-        if dic_json["basic"]["phonetic"] != "":
-            res += u"国际:" + dic_json["basic"]["phonetic"] + "\n"
-        if dic_json["basic"]["uk-phonetic"] != "":
-            res += u"英音:" + dic_json["basic"]["uk-phonetic"] + "\n"
-        if dic_json["basic"]["us-phonetic"] != "":
-            res += u"美音:" + dic_json["basic"]["us-phonetic"] + "\n"
-        res += u"翻译:\n"
-        for c in dic_json["basic"]["explains"]:
-            res += c + ","
-        res = res[:-1] + "\n"
-        res += u"网络释义:\n"
+        res += u"------基本词典------\n"
+        for c in dic_json["basic"]:
+            res += c + ':'
+            if type(c) is dict:
+                for cb in c:
+                    res += cb + ","
+                res = res[:-1] + "\n"
+            else:
+                res += c + "\n"
+        #if dic_json["basic"]["phonetic"] != "":
+        #    res += u"国际:" + dic_json["basic"]["phonetic"] + "\n"
+        #if dic_json["basic"]["uk-phonetic"] != "":
+        #    res += u"英音:" + dic_json["basic"]["uk-phonetic"] + "\n"
+        #if dic_json["basic"]["us-phonetic"] != "":
+        #    res += u"美音:" + dic_json["basic"]["us-phonetic"] + "\n"
+        #res += u"翻译:\n"
+        #for c in dic_json["basic"]["explains"]:
+        #    res += c + ","
+        #res = res[:-1] + "\n"
+        res += u"------网络释义-------\n"
         for c in dic_json["web"]:
-            res += c["key"] + ";"
+            res += c["key"] + ":"
             for v in c["value"]:
                 res += v + ","
             res = res[:-1] + "\n"
