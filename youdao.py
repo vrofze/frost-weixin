@@ -28,12 +28,12 @@ def get(str):
         res += u"------基本词典------\n"
         for c in dic_json["basic"]:
             res += c + ':'
-            if type(dic_json["basic"][c]) is dict:
-                for cb in c:
-                    res += cb + ","
-                res = res[:-1] + "\n"
-            else:
-                res += dic_json["basic"][c] + "\n"
+            #if type(dic_json["basic"][c]) is dict:
+            for cb in c:
+                res += cb + ","
+            #    res = res[:-1] + "\n"
+            #else:
+            #    res += dic_json["basic"][c] + "\n"
         #if dic_json["basic"]["phonetic"] != "":
         #    res += u"国际:" + dic_json["basic"]["phonetic"] + "\n"
         #if dic_json["basic"]["uk-phonetic"] != "":
