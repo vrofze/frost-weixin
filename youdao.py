@@ -28,7 +28,7 @@ def get(str):
         res += u"------基本词典------\n"
         for c in dic_json["basic"]:
             res += c + ':'
-            if type(c) is dict:
+            if type(dic_json["basic"][c]) is dict:
                 for cb in c:
                     res += cb + ","
                 res = res[:-1] + "\n"
