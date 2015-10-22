@@ -38,7 +38,10 @@ def wechat_auth():
 
 def distrib(str):
     strt = str.decode('utf8')
-    if strt[0:3] == u"翻译：" or strt[0:3] == u"翻译:" or strt[0:3] == 'fy:' or strt[0:3] == 'fy：':
-        return u'翻译了：'+ strt[3:] + '\n' + youdao.get(strt[3:]).encode('utf8')
-    else:
-        return tuling.Get(str)
+    try:
+        if strt[0:3] == u"翻译：" or strt[0:3] == u"翻译:" or strt[0:3] == 'fy:' or strt[0:3] == 'fy：':
+            return youdao.get(strt[3:]).encode('utf8')
+        else:
+            return tuling.Get(str)
+    except:
+        return strt[3:]
