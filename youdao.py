@@ -32,7 +32,7 @@ def get(str):
             if type(dic_json["basic"][c]) is list:
                 for cb in dic_json["basic"][c]:
                     res += cb + ","
-                    res = res[:-1] + "\n"
+                res = res[:-1] + "\n"
             else:
                 res += dic_json["basic"][c] + "\n"
             #else:
