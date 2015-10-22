@@ -33,7 +33,7 @@ def get(str):
                     res += cb + ","
                 res = res[:-1] + "\n"
             else:
-                res += c + "\n"
+                res += dic_json["basic"][c] + "\n"
         #if dic_json["basic"]["phonetic"] != "":
         #    res += u"国际:" + dic_json["basic"]["phonetic"] + "\n"
         #if dic_json["basic"]["uk-phonetic"] != "":
