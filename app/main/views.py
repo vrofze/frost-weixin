@@ -28,4 +28,3 @@ def index():
     reply = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><Funcflag>0</Funcflag></xml>'
     response = make_response(reply % (FromUserName, ToUserName, str(int(time.time())), content))
     return response
-
