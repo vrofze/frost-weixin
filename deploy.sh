@@ -4,7 +4,7 @@ tmp_dir=/tmp/frostwx
 
 app_dir=/var/www/frostwx
 wwwlog_dir=/var/log/www
-frostwslog_dir=/var/log/www/frostwx
+frostwxlog_dir=/var/log/www/frostwx
 socket_dir=/var/www/frostwx/socket
 config_dir=/var/www/config
 nginx_config_dir=${config_dir}/nginx
