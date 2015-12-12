@@ -52,7 +52,7 @@ ${env_dir}/bin/pip install -r requirements.txt
 echo reload uwsgi
 if test $(ps -aux|grep "uwsgi --emperor"|wc -l) -eq 1
 then
-    uwsgi --emperor ${uwsgi_config_dir} --daemonize ${log_fir}/uwsgi_emperor.log
+    uwsgi --emperor ${uwsgi_config_dir} --daemonize ${frostwxlog_dir}/uwsgi_emperor.log
 else
     touch ${uwsgi_config_dir}/frostwx_uwsgi.ini
 fi
