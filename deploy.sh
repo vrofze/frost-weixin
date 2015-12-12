@@ -3,7 +3,8 @@
 tmp_dir=/tmp/frostwx
 
 app_dir=/var/www/frostwx
-log_dir=/var/log/www/frostwx
+wwwlog_dir=/var/log/www
+frostwslog_dir=/var/log/www/frostwx
 socket_dir=/var/www/frostwx/socket
 config_dir=/var/www/config
 nginx_config_dir=${config_dir}/nginx
@@ -30,7 +31,8 @@ fi
 
 echo create app_dir
 test -d $app_dir || mkdir $app_dir
-test -d $log_dir || mkdir $log_dir
+test -d $wwwlog_dir || mkdir $wwwlog_dir
+test -d $frostwxlog_dir || mkdir $frostwxlog_dir
 test -d $config_dir || mkdir $config_dir
 test -d $socket_dir || mkdir $socket_dir
 test -d $nginx_config_dir || mkdir $nginx_config_dir
@@ -48,7 +50,7 @@ echo install frostwx
 ${env_dir}/bin/pip install -r requirements.txt
 
 echo reload uwsgi
-if test ${ps -aux|grep "uwsgi --emperor"|wc -l} -eq 1
+if test $(ps -aux|grep "uwsgi --emperor"|wc -l) -eq 1
 then
     uwsgi --emperor ${uwsgi_config_dir} --daemonize ${log_fir}/uwsgi_emperor.log
 else
