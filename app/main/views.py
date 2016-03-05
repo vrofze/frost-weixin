@@ -18,7 +18,7 @@ def index():
         echostr = query.get('echostr', '')
         s = [timestamp, nonce, token]
         s.sort()
-        s = ''.join(s)
+        s = ''.join(s).encode()
         if(hashlib.sha1(s).hexdigest == signature):
             return make_response(echostr)
     xml_recv = ET.fromstring(request.data)
