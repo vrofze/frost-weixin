@@ -16,12 +16,10 @@ def index():
         timestamp = query.get('timestamp', '')
         nonce = query.get('nonce', '')
         echostr = query.get('echostr', '')
-        # echostr = '123'
         s = [timestamp, nonce, token]
         s.sort()
-        s = ''.join(s)
-        return make_response(echostr)
-        if(hashlib.sha1(s).hexdigest == signature):
+        s = ''.join(s).encode()
+        if(hashlib.sha1(s).hexdigest() == signature):
             return make_response(echostr)
     xml_recv = ET.fromstring(request.data)
     ToUserName = xml_recv.find('ToUserName').text
