@@ -16,6 +16,7 @@ def index():
         timestamp = query.get('timestamp', '')
         nonce = query.get('nonce', '')
         echostr = query.get('echostr', '')
+        # echostr = '123'
         s = [timestamp, nonce, token]
         s.sort()
         s = ''.join(s)
