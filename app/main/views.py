@@ -25,7 +25,7 @@ def index():
     ToUserName = xml_recv.find('ToUserName').text
     FromUserName = xml_recv.find('FromUserName').text
     querystr = xml_recv.find('Content').text.encode('utf8')
-    content = querystr.encode()  # distrib(querystr)
+    content = querystr.decode('utf8')  # distrib(querystr)
     reply = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><Funcflag>0</Funcflag></xml>'
     response = make_response(
         reply % (FromUserName, ToUserName, str(int(time.time())), content)
