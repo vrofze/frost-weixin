@@ -21,7 +21,9 @@ def index():
         s = ''.join(s).encode()
         if(hashlib.sha1(s).hexdigest() == signature):
             return make_response(echostr)
-    xml_recv = ET.fromstring(request.data)
+    xml_recv = ET.fromstring(request.form['boyd'])
+    return make_response(request.data)
+    return make_response(xml_recv)
     ToUserName = xml_recv.find('ToUserName').text
     FromUserName = xml_recv.find('FromUserName').text
     querystr = xml_recv.find('Content').text.encode('utf8')
