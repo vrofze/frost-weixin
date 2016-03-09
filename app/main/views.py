@@ -5,7 +5,7 @@ from flask import request, make_response
 import hashlib
 import xml.etree.ElementTree as ET
 import time
-from ..tools import distrib
+from .tools import distrib, store
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -26,6 +26,7 @@ def index():
     ToUserName = xml_recv.find('ToUserName').text
     FromUserName = xml_recv.find('FromUserName').text
     querystr = xml_recv.find('Content').text
+    store("insert into message (fromusername, tousername, msg) values (%s, %s, %s)", (FromUserName, ToUserName, querystr))
     content = distrib(querystr)  # distrib(querystr)
     reply = '<xml><ToUserName><![CDATA[%s]]></ToUserName><FromUserName><![CDATA[%s]]></FromUserName><CreateTime>%s</CreateTime><MsgType><![CDATA[text]]></MsgType><Content><![CDATA[%s]]></Content><Funcflag>0</Funcflag></xml>'
     response = make_response(
