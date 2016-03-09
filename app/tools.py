@@ -7,7 +7,7 @@ import json
 def distrib(str):
     strt = str
     if strt[0:3] == u"翻译：" or strt[0:3] == u"翻译:" or strt[0:3] == u'fy:' or strt[0:3] == u'fy：':
-        return youdao.get(strt[3:]).encode('utf8')
+        return youdao(strt[3:]).encode('utf8')
     else:
         return tuling(str)
 
