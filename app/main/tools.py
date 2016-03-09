@@ -2,6 +2,7 @@
 import urllib.request
 from urllib import parse
 import json
+from ..mysqlhelper import mysqlhelper
 
 
 def distrib(str):
@@ -112,3 +113,8 @@ def transl(str):
     if(str in dic.keys()):
         return dic[str]
     return str
+
+
+def store(str, param=tuple()):
+    helper = mysqlhelper(host='frost.ncuhomedev.com', user='connuser', passwd='123456', db='weixin')
+    return helper.query(str, param)
