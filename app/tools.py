@@ -6,7 +6,7 @@ import json
 
 def distrib(str):
     strt = str
-    if strt[0:3] == u"翻译:" or strt[0:3] == u"翻译:"
+    if strt[0:3] == u"翻译:" or strt[0:3] == u"翻译:":
         return youdao(strt[3:])
     if strt[0:2] == u'fy' or strt[0:2] == u'fy':
         return youdao(strt[2:])
