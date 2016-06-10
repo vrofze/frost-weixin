@@ -6,6 +6,8 @@ from ..mysqlhelper import mysqlhelper
 
 
 def distrib(str):
+    """used to distribute messages"""
+
     strt = str
     if strt[0:3] == u"翻译:" or strt[0:3] == u"翻译:":
         return youdao(strt[3:])
@@ -16,12 +18,16 @@ def distrib(str):
 
 
 def getHtml(url):
+    """get api"""
+
     page = urllib.request.urlopen(url)
     html = page.read()
     return html
 
 
 def tuling(str):
+    """tuling bot"""
+
     key = "4ee47c1278c5cada2e82cf36861ffb2a"
     str = parse.quote(str)
     api = "http://www.tuling123.com/openapi/api?key=%s&info=%s" % (key, str)
@@ -31,7 +37,8 @@ def tuling(str):
 
 
 def youdao(str):
-    # str = '你好'
+    """youdao dict"""
+
     str = parse.quote(str)
     api = "http://fanyi.youdao.com/openapi.do?keyfrom=frostwx&key=594129755&type=data&doctype=json&version=1.1&q=%s" % str
     response = getHtml(api)
@@ -116,5 +123,5 @@ def transl(str):
 
 
 def store(str, param=tuple()):
-    helper = mysqlhelper(host='frost.ncuhomedev.com', user='connuser', passwd='123456', db='weixin')
+    helper = mysqlhelper(host='localhost', user='user', passwd='XXX', db='weixin')
     return helper.query(str, param)
