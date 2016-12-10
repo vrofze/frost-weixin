@@ -1,6 +1,6 @@
+# -*- coding:utf-8 -*-
 """tools used in main.py"""
 
-# -*- coding:utf-8 -*-
 import os
 import urllib.request
 from urllib import parse
