@@ -5,6 +5,7 @@ import os
 import urllib.request
 from urllib import parse
 import json
+from setting import settings
 
 def distrib(strl):
     """used to distribute messages"""
@@ -28,7 +29,7 @@ def get_html(url):
 def tuling(strl):
     """tuling bot"""
 
-    key = os.getenv('TULING_KEY')  # settings['tuling_key']
+    key = settings['tuling_key']  # os.getenv('TULING_KEY')
     strl = parse.quote(strl)
     api = "http://www.tuling123.com/openapi/api?key=%s&info=%s" % (key, strl)
     response = get_html(api)
@@ -42,7 +43,8 @@ def youdao(strl):
     strl = parse.quote(strl)
     api = "http://fanyi.youdao.com/openapi.do?"\
           "keyfrom=%s&key=%s&type=data&doctype=json&version=1.1&q=%s" \
-          % (os.getenv('YOUDAO_USER'), os.getenv('YOUDAO_KEY'), strl)
+          % (settings['youdao_user'], settings['youdao_key'], strl)
+    # os.getenv('YOUDAO_USER') os.getenv('YOUDAO_KEY')
     response = get_html(api)
     dic = json.loads(response.decode('utf8'))
     err_dic = {
