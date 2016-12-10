@@ -3,6 +3,9 @@
 # C extensions
 *.so
 
+# nginx config file
+nginx.conf
+
 # Packages
 *.egg
 *.egg-info
