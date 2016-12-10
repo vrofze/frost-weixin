@@ -10,6 +10,7 @@ import tornado.ioloop
 import tornado.httpserver
 import tornado.wsgi
 import gevent.wsgi
+from tools import distrib
 
 from tornado.options import define, options
 
@@ -55,7 +56,7 @@ class MainHandler(tornado.web.RequestHandler):
         to_user_name = xml_recv.find("ToUserName").text
         from_user_name = xml_recv.find("FromUserName").text
         query_str = xml_recv.find("Content").text
-        content = distrb(query_str)
+        content = distrib(query_str)
         reply = """
         <xml><ToUserName><![CDATA[%s]]></ToUserName>
         <FromUserName><![CDATA[%s]]></FromUserName>
@@ -68,10 +69,6 @@ class MainHandler(tornado.web.RequestHandler):
                             to_user_name,
                             str(int(time.time())),
                             content))
-
-
-def distrb(query_str):
-    return query_str
 
 
 class TestHandler(tornado.web.RequestHandler):

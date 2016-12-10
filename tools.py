@@ -2,8 +2,6 @@
 import urllib.request
 from urllib import parse
 import json
-from ..mysqlhelper import mysqlhelper
-
 
 def distrib(str):
     """used to distribute messages"""
@@ -122,6 +120,8 @@ def transl(str):
     return str
 
 
+"""
 def store(str, param=tuple()):
     helper = mysqlhelper(host='localhost', user='user', passwd='XXX', db='weixin')
     return helper.query(str, param)
+"""
