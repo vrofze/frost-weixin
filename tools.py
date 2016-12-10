@@ -46,11 +46,11 @@ def youdao(strl):
     response = get_html(api)
     dic = json.loads(response.decode('utf8'))
     err_dic = {
-        '20': u'要翻译的文本过长',
-        '30': u'无法进行有效的翻译',
-        '40': u'不支持的语言类型',
-        '50': u'无效的key',
-        '60': u'无词典结果'
+        20: u'要翻译的文本过长',
+        30: u'无法进行有效的翻译',
+        40: u'不支持的语言类型',
+        50: u'无效的key',
+        60: u'无词典结果'
     }
     if dic['errorCode'] != 0:
         return err_dic[dic['errorCode']]
