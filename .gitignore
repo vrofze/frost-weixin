@@ -6,6 +6,9 @@
 # nginx config file
 nginx.conf
 
+# setting file
+setting.py
+
 # Packages
 *.egg
 *.egg-info
