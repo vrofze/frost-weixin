@@ -13,7 +13,7 @@ import gevent.wsgi
 
 from tornado.options import define, options
 
-define("port", default=8000, help="run on the given port", type=int)
+define("port", default=8001, help="run on the given port", type=int)
 
 class Application(tornado.wsgi.WSGIApplication): # tornado.web.Application
     """application from tornado.web.Application"""
@@ -86,7 +86,7 @@ def main():
     # http_server = tornado.httpserver.HTTPServer(Application())
     # http_server.listen(options.port)
     # tornado.ioloop.IOLoop.current().start()
-    server = gevent.wsgi.WSGIServer(('', 8000), Application())
+    server = gevent.wsgi.WSGIServer(('', 8001), Application())
     server.serve_forever()
 
 if __name__ == "__main__":
