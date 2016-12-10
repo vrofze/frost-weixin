@@ -1,4 +1,5 @@
 # -*- coding:utf-8 -*-
+import os
 import urllib.request
 from urllib import parse
 import json
@@ -27,7 +28,7 @@ def getHtml(url):
 def tuling(str):
     """tuling bot"""
 
-    key = settings['tuling_key']
+    key = os.getenv('TULING_KEY')  # settings['tuling_key']
     str = parse.quote(str)
     api = "http://www.tuling123.com/openapi/api?key=%s&info=%s" % (key, str)
     response = getHtml(api)
@@ -39,7 +40,9 @@ def youdao(str):
     """youdao dict"""
 
     str = parse.quote(str)
-    api = settings['youdao_api'] % str
+    api = "http://fanyi.youdao.com/openapi.do?"\
+          "keyfrom=%s&key=%s&type=data&doctype=json&version=1.1&q=%s" \
+          % (os.getenv('YOUDAO_USER'), os.getenv('YOUDAO_KEY'), str)
     response = getHtml(api)
     dic = json.loads(response.decode('utf8'))
     err_dic = {
